@@ -6,35 +6,25 @@ import java.util.List;
 
 @Entity
 @Table(name = "posts")
-public class Post {
+public class Posteo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
     private String titulo;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
     private String contenido;
 
-    @Column(nullable = false)
     private LocalDate fechaCreacion;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
-    public Post() {
-    }
-
-    public Post(Long id, String titulo, String contenido, LocalDate fechaCreacion) {
-        this.id = id;
-        this.titulo = titulo;
-        this.contenido = contenido;
-        this.fechaCreacion = fechaCreacion;
+    public Posteo() {
     }
 
     public Long getId() {

@@ -11,21 +11,14 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts;
+    @OneToMany(mappedBy = "author")
+    private List<Posteo> posts;
 
     public Author() {
-    }
-
-    public Author(String name, String email) {
-        this.name = name;
-        this.email = email;
     }
 
     public Long getId() {
@@ -52,11 +45,11 @@ public class Author {
         this.email = email;
     }
 
-    public List<Post> getPosts() {
+    public List<Posteo> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(List<Posteo> posts) {
         this.posts = posts;
     }
 }

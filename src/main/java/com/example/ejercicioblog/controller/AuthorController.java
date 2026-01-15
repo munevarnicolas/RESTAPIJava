@@ -28,7 +28,6 @@ public class AuthorController {
 
     @GetMapping("/{id}")
     public Author obtenerAuthor(@PathVariable Long id) {
-        return authorService.obtenerPorId(id)
-                .orElseThrow(() -> new RuntimeException("Author no encontrado"));
+        return authorService.obtenerPorId(id).orElse(null);
     }
 }

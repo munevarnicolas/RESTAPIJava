@@ -11,22 +11,14 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
     private String text;
 
-    @Column(nullable = false)
     private LocalDate createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post post;
+    private Posteo post;
 
     public Comment() {
-    }
-
-    public Comment(String text, LocalDate createdAt) {
-        this.text = text;
-        this.createdAt = createdAt;
     }
 
     public Long getId() {
@@ -53,11 +45,11 @@ public class Comment {
         this.createdAt = createdAt;
     }
 
-    public Post getPost() {
+    public Posteo getPost() {
         return post;
     }
 
-    public void setPost(Post post) {
+    public void setPost(Posteo post) {
         this.post = post;
     }
 }
